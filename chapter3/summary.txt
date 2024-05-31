@@ -1,0 +1,121 @@
+
+                        ARRAYS,SLICES AND ITERATION 
+                        =============================
+
+1. LIST TYPES: ARRAYS AND SLICES 
+-================================
+> Go has two built in ordered list collection types: arrays and slices. 
+>Unlike other languages there are no built in complex list types such as linked lists or trees. 
+>Instead Go uses the concept of composition to allow for creating more complex data structures 
+>They arrays and slices are both ordereded collections of values with the only difference being the arrays are fixed size while the slices are not. 
+>Arrays are useful when planning for a detailed layout of memory also they are the building blocks of slices. 
+       
+            a) DIFFERENCES BETWEEN ARRAYS AND SLICES 
+            ==========================================
+        >Arrays and slices are both orderede collections of values. 
+        >Both require that the values all be of the same type. 
+        >Arrays, however have a fixed length whereas slices can grow as needed. 
+        >The capacity of an array is defined at creation time. 
+        >Once an array has been allocated its size, the size can no longer be changed.
+        >All of the memory needed to store the array is allocated at creation time. 
+        >This means that the array is a fixed size and once created, it cannot be resized. 
+        >The array will be garbage collected once its no longer in use.
+        > Arrays are useful when you know exactly the amount of data you need to store.
+        > If you do not know the size at creation time thats when we use the slice commonly. 
+        > Example of an array: names := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
+        > Example of a slice: names := []string{"Kurt", "Janis", "Jimi", "Amy"}
+
+            b) SPOTTING THE DIFFERENCE 
+            ========================================
+        >Once created both the arrays and slices behave nearly identical with the only difference being in the way they are created. 
+        >Arrays requires you specify the size at creation time while slices do not.
+        > Example of array : namesArray := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
+        > Example of slice :  namesSlice := []string{"Kurt", "Janis", "Jimi", "Amy"}
+
+            c) INITIALIZING ARRAYS AND SLICES 
+            =============================================
+        > With simple data types such as strings, numbers and booleans , you can use them with no special initialization. 
+        > With more complex types, values may need to be initialized before they can be used.
+        >At this initialization time, you have the option of filling the type with values or leaving the type to be empty. 
+        >N/B : Arrays and slices don't need to be initialized before they are used. They can be used without being initialzed. 
+        > When attempting to access an array with hard-coded index, the Go compiler checks to see if the index is out of bounds.
+        > If the index being accessed is out of bounds, the compiler throws an error.
+        > If however, the index is a variable or the type is a slice instead of an array, the compiler does not check for out-of-bounds errors. 
+        
+            d) ARRAY AND SLICE TYPES 
+            ====================================
+        > Arrays and slices can only hold values of the type they were declared to hold. 
+        > If you declare an array of strings, then the only data type that can be stored will be tha string. 
+        > When you have variables that have been assigned to arrays and slices, those variables have a type associated with them. 
+        > This type is called a type definition.
+        
+            e) APPENDING TO SLICES .
+           =======================================
+        > This function works with only slices whereby we can add the append function to assign and add new items for the data. 
+        > All values being appended must be of the same type as the slice of initial declared string values. 
+        > For example : var names []string 
+        > To append to this :- names = append(names, "Kris") 
+
+            f) HOW SLICES WORK 
+           ==========================================
+        > Although arrays are very straightforward to understand because they can hold a fixed number things, slices are a bit more complex. Slices can grow as needed to store as many
+        values as needed.
+        > A slice has three parts which include the following :
+            i) Length - How many values are in the slice 
+            ii) Capacity - How many values can be stored in the slice. 
+            iii) Pointer to the underlying array:- Where the values are actually stored
+        > We can check the length and capacity of variables to be stored by the go runtime 
+        > for example: var names []string 
+        > We use the built in len(names) to get the possible length of the array and slices. 
+        > We use the built in cap(names) to get the possible capacity of the array.
+        > Slices grow automatically with the addition of new items to the slice list. 
+        > Slices can be declared in multiple ways including using the make() built in function 
+        > for example : make([]string,0) 
+        > We can also declare using the lenght and capacity of the slice and declare as :
+        > a := make([]string,1,3)
+        > When a separate, independent copy of a slice is needed you can use the built-in copy function,
+
+2. ITERATION 
+================
+> There are two options for iteration in Go and they include the following :
+    1. The for loop 
+    2. The range keyword. 
+
+    1. THE for LOOP 
+    ==================================
+    > Versatile commonly used loop such as for, for while, do while , do until e.t.c 
+    > A for loop can consist of three parts (;). 
+    > The first part is the precondition i:= 0 
+    > The second part of a for loop is the conditional, which is responsible for returning a bool that should return to true or false. 
+    > This part is the i < len(array) this returns true as long as the variable i is less than the length of the slice, names. 
+    > The last part is the post condition which runs after each iteration of the loop and before the next execution of the conditional.  
+    > The post condition is i++ , which increments the i variable by 1 or more. 
+    > When the post condition reaches the maximum iteration it can break 
+
+    2. ITERATING OVER ARRAYS AND SLICES. 
+    ========================================
+    > 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

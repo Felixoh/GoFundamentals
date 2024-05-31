@@ -1,0 +1,246 @@
+        GO LANGUAGE OVERVIEW
+-----------------------------------------------------
+
+STATIC TYPING 
+=============
+> Go is a static typed  language where each statement is statically checked at compile time,when the binary is built , rather than at runtime.
+>It also means that the data type is bound to the variable. In dynamic languages such as python the data type is bound to the value. 
+var pi float64 = 3.14 // pi is a float64
+var week int = 7 // week is an int
+> above is a typical example of dynamically binding data to a variable. 
+
+
+GARBAGE COLLECTION
+====================
+> This is the horse behind managing Go memory hence minimising the possibility of bugs coming up in your code. 
+> The GC will automatically allocate and de-allocate memory when needed and when deemend efficient.
+
+COMPILATION
+==============
+>Before running a go program you must first compile. 
+> Go design incorporates the efficient and fast compile time as was the big problem in previous languages such as C and C++
+> This ensures type safety and correctness of code produced all the time. 
+
+KEYWORDS,OPERATORS AND DELIMITERS
+===================================
+> Go features selection of keywords that are reserved and not allowed to be used in constructing identifiers and functions. 
+> These keywords include :
+---
+any || default ||func ||interface ||select
+break ||defer ||go ||map ||struct
+case ||else ||goto ||package ||switch
+chan ||fallthrough ||if ||range ||type
+const ||for ||import ||return ||var
+continue||
+---
+> The following  a list of operators needed in Go  :
+---
++ & += &= && == != ( )
+- | -= |= || < <= [ ]
+*
+^ *
+= ^= <- > >= { }
+/ << /= <<= ++ = := , ;
+% >> %= >>= -- ! ... . :
+&^ &^=
+-----
+
+NUMBERS
+==============
+> Go has two types of numerical types
+> The first is the architectural-independent type. 
+> This means that regardless of the architecture you compile for, the type will have the
+correct size, bytes, for your type.
+> Go has a number of architecture-independent numeric types as shown below.
+
+---
+uint8   unsigned 8-bit integers (0 to 255)
+uint16   unsigned 16-bit integers (0 to 65535)
+uint32   unsigned 32-bit integers (0 to 4294967295)
+uint64   unsigned 64-bit integers (0 to 18446744073709551615)
+int8    signed 8-bit integers (-128 to 127)
+int16   signed 16-bit integers (-32768 to 32767)
+int32   signed 32-bit integers (-2147483648 to 2147483647)
+int64   signed 64-bit integers (-9223372036854775808 to   y9223372036854775807)
+float32     IEEE-754 32-bit floating-point numbers (+- 1O-45 -> +-  3.4 * 1038)
+float64     IEEE-754 64-bit floating-point numbers (+- 5 *10-324 -> 1.7 *y10308)
+complex64   complex numbers with float32 real and imaginary parts
+complex128  complex numbers with float64 real and imaginary parts
+byte    alias for uint8
+rune    alias for int32
+---
+>In addition to the implementation-specific numeric types, Go has
+a couple of architecture implementation-specific types, listed here:
+................................
+1. uint    either 32 or 64 bits
+2. int     same size as uint
+3. uintptr     an unsigned integer large enough to store the uninterpreted bits
+yof a pointer value
+
+STRINGS
+===========
+> A string is a sequence of one or more characters (letters,numbers,symbols) that can be either a constant or a variable. 
+> Strings exist within either back-quotes('') or ("")
+> If you use back quotes u are creating  rawstring literal. If you use douuble quotes, you are creating an interpreted string literal.
+
+INTERPRETED STRING LITERALS
+=============================
+> Interpreted string literals are character sequences between double quotes, as in "bar".
+>Within the quotes, any character may appear except newline and unescaped double quote
+> You will almost always use interpreted string literals because they allow for escape characters, such as \t and \n
+> Raw string literals can be used to create multiline strings
+> unlike interpreted string literals. This makes raw string literals very useful for creating multiline templates, mock JSON data for testing, and so on.
+
+UTF-8
+=========
+> Go supports UTF-812 characters out of the box, without any special setup, libraries, or packages.
+> Go is able to correctly interprate UTF-8 character encoded such chinese language, japanese e.t.c.
+
+RUNE 
+========
+> This is an alias for int32 and is used to represent individual characters.
+> A rune can be made up of 1 to 3 int32 values.
+> This allows for both single and multibyte characters. A rune can be defined using the single quote('') character. 
+> When printed as a value, a rune will be displayed as an int32 
+
+n/b: when iterating over strings the most appropriate ways is to use the for range keyword and not the 
+traditiona iteration using the for-loop as was the case in traditional looping.
+
+
+VARIABLES
+========
+> Variables are memory locations 
+> There are more than one way to declare variables in Golang for the same exact values and variables.
+> Each method has its own place of use in the Go language. 
+    1. VARIABLE DECLARATION
+        =======================
+    > Go is static language , meaning the type of variable is known at compile time.
+    > New variables can be declared with the var keyword and given  a name and a type 
+    > var <name> <type>
+    examples: 
+        var i int // declare i as an int
+        var f float64 // declare f as a float64
+        var b bool // declare b as a bool
+        var s string // declare s as a string
+    2. VARIABLE ASSIGNMENT 
+        =====================
+    > Once a variable has been declared , any value of the variable's type can be assigned to it using the = operator.
+    > examples:
+        var i int // declare i as an int
+        var f float64 // declare f as a float64
+
+        i = 42 // assign 42 to i
+        f = 3.14 // assign 3.14 to f
+    > Trying to assign a value to a variable that is not same type as the value being assigned throws a compile error. 
+    > If a variable has been declared but no value has been assigned to it, the variable will have a zero value.
+    >A zero value is a value that is the same type as the variable. For instance a zero value for int is 0
+    > Types sucha as struct have zero values that is composed of the type's individual fields' zero values.
+    > The fmt package has usefull formating values you can use to inspect the type a variable has 
+    > The %T verb can show the type of the variable created. 
+    
+    3. NIL 
+        ========
+    >There are certain types in Go, such as maps,interfaces and pointers that have no obvious zero values.
+    >For these types the zero value is nil. 
+
+    4. VARIABLE DECLARATION AND INITIALIZATION
+        =======================================
+    > When creating  a variable sometimes we may want to initialize that variable with a value. This is done by assigning a value to a variable at DECLARATION
+    > For example:
+        > var i int = 42
+        > var f float64 = 3.14
+        > var b bool = true
+        > var s string = "hello world" 
+
+    5. ASSIGNING MULTIPLE VALUES 
+        ==========================
+    > Go allows for assignment of several variables within the same line. Each of this can be of different data types.
+    > For example this can be done with the following syntax for multiple assignments :- 
+        i, f, b, s := 42, 3.14, true, "hello world"
+    > This approach is usually applied when capturing the results from a function call,
+    For example :  i, f, b, s := Values()
+
+    6: UNUSED VARIABLES
+        =========================
+    > Go throws errors for unused variables or imports.
+    >The language also allows the capturing of all results from a function call even if you do not use the results.
+    > We can tell the compiler to discard these unused variables by using the _ identifier to discard them.
+
+    7. CONSTANTS
+        =============
+    > These are variables, except that they can't be modified once they have been declared. 
+    > Constants can only be a character,string,boolean or numeric values.
+    > Constants are declared using the const keyword. 
+    For example: const gopher = "Gopher" 
+    > Trying to modify a constant will definitely throw a compile time error because its not allowed in Go 
+    > Values that can be modified such as = >maps,slices=< cannot be constants and neither the result of a function call. 
+    > If you declare a constant with a type it will be that exact type 
+    > For example: 
+        const ( leapYear = int32(366))
+    
+    8. NAMING IDENTIFIERS 
+        =======================
+    > Naming identifiers has some rules that are commonly applied that you ned to keep in mind :-  
+        > variable names are case sensitive i.e username,Username,USERname e.t.c 
+        > variable names cannot be reserved words. 
+        > variables names cannot begin with  a number 
+        > variable names cannot contain special characters. 
+        > variable names must be made up of only letters,numbers and underScores. 
+        > Stick to short and clear variable names 
+        > avoid names that will end up conflicting with package names. 
+    > The case of the first name of an identifier has a special meaning in Go. 
+    > If an identifier starts with an uppercase letter, that identifier is accessible outside the package it is declared in(or exported)
+    > If an identifier starts with a lowercase letter, its only available within the package it is declared in. 
+
+PRINTING AND FORMATTING 
+===========================
+> Commonly used package is the "fmt" when we want to print and format values in a certain way :- 
+    1. FORMATTING FUNCTIONS 
+        =====================
+        > There are numerous functions that are quite usefull in formatting and some may be quite identical and they all performa the same function of formatting strings. 
+        > Typing in the commandline as > go doc -short fmt :-  prints all the functions in the fmt package. 
+        > Functions starting with Sprint, such as fmt.Sprint() all return a formatted string, 
+        > Functions starting with Print such as fmt.Println() all print the formatted string to the standard output. 
+        > Functions strarting with Fprint such as fmt.Fprint() all print the formatted string to the provided io.Writer().
+        > go doc fmt.Fprintf()
+            Fprint formats using the default formats for its operands and writes
+        > Most printing and sprinting functions in the fmt package do not add a new line to the end of the string.
+        > Using the fmt.Println method will automatically add new lines to the sequences and so on ..
+    2. FORMATTING STRINGS 
+        ===================
+        > When formatting strings, the two most common verbs are the %s and the %q.
+        > The %s verb prints the string as it is whereas the %q verb prints the string as it is with quotes around it. 
+        > s := "Hello , world," 
+         fmt.Printf("%s\n",s)
+    3. FORMATTING INTEGERS 
+        =====================
+        > Integers are formatted with the same rules as %d verb commonly used as the printing verb. 
+        > fmt.Printf("%d\n", 12345)
+        > You can specify a padding alongside for example:
+        > fmt.Printf("%5d \n",12345)
+    4. FORMATTING FLOATS 
+        ======================
+        > All similar to integers only that the keyword used commonly in integer formatting is %f 
+        > For example : fmt.Printf("%f\n",1.2345)
+        >To print with two decimal places we can apply the digits before 
+        > For example : fmt.Printf("%.2f \n",1.2345)
+        >Above will print 1.23 
+    5. PRINTING A VALUE'S TYPE 
+        ===========================
+        > The %T verb prints the type of the value. 
+        > For example : user := 500
+        > fmt.Printf("%T\n",user)
+    6. PRINTING A VALUE 
+        =========================
+        > To print the value of a variable ,you use the %v verb. 
+        > The %v prints the values of each of the struct's fields. 
+        > For example :- u := User{ Name: "Kurt",Age: 27} 
+            fmt.Printf("%v\n",u) 
+
+CONVERTING STRINGS TO AND FROM NUMBERS :
+=============================================
+> Unlike the fmt package , the strconv package has functions to explicitely try to convert a single value or  a variable to a number and vice versa.
+> The most commonly used functions are strconv.ParseInt(),strconv.ParseUint(),strconv.ParseFloat() and strconv.Atoi 
+> When parsing a number from a string, you need to tell Go what base you are using for a number and what bit size you are expecting. 
+> Find test exercises listed in Listings 2.74 for further practice samples. 
+
