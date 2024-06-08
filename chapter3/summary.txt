@@ -94,12 +94,21 @@
 
     2. ITERATING OVER ARRAYS AND SLICES. 
     ========================================
-    > 
-
-
-
-
-
+    > Iterating being  a common function , the Go has developed an implementation strategy using the range keyword.
+    > For example in the following collection using the range keyword. 
+    > names := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
+        Looping:
+        for i, n := range names {
+                fmt.Printf("%d %s\n", i, n)
+            }
+    > The return is two items that is the index and the value represented.
+    > The continue keyword allows you to go back to the start of the loop and stop executing the rest of the code in the for block.
+    > f i == 3 {
+            // go to the start of the loop
+            continue
+        }
+    > To stop the execution, you can use the break keyword. 
+    > An infinite loop also happens to be controlled by the break and continue keywords. 
 
 
 

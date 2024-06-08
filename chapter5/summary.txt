@@ -1,0 +1,87 @@
+            FUNCTIONS 
+            ============
+
+FUNCTION DEFINITION 
+------------------------
+> Functions resemble their similar ones in other programming languages and they are first class citizens in evaluations. 
+> Always declared using the func keyword. 
+
+ARGUMENTS AND RETURN 
+-------------------------
+> Functions can take (N) number of arguments including other functions. 
+>They are declared as func(name type) 
+> Go being a static language, the type must be applied to the arguments on initialisation of the function. 
+> Declaring arguments of the same type can be done by listing them and apply the comma to separate them 
+>For example : func sayHello(greeting,name string) 
+> Functions can return between 0 and N number of value arguments. 
+> Though its a good practice not to return more than two or three values evaluated. 
+> Mostly in the standard library the last return statement is usually  the error statement. 
+
+MULTIPLE RETURN ARGUMENTS .
+-----------------------------
+> Multiple return statements need to be placed inside of a ()
+> For example: func info(s []string) (string, int, int)
+> above function returns a string, integer and an integer again. 
+> If a funcction returns an unwanted argument list, it can be ignored/discarded by the (-) placeholder. 
+
+
+FIRST CLASS FUNCTIONS 
+-----------------------
+>In Go, functions are first class citizens. That means you can treat functions as you do other types typically. 
+> This means they can be arguments, return values to and from just like any other type. 
+> For example: 
+    // create a new function and
+    // assign it to a variable
+    f := func() {
+            // print Hello when called
+            fmt.Println("Hello")
+        }
+        //call the function 
+        f() 
+> Function as arguments to other functions :- 
+for example:- func sayHello(fn func() string)
+
+ANONYMOUS FUNCTIONS 
+----------------------
+> These are functions that are assigned to a variable or that dont have a "name" associated with them. 
+> Functions can accept the return arguments of one function as its input arguments. 
+> This is posible as long as the return types and number of return arguments are identical to the input arguments and number of input arguments. 
+> Funcrions that can take 0-N number of arguments are called variadic functions and they are usually denoted by (----) ellipsis.
+> You can as many inputs as you want. 
+> Variadic arguments must be the last argment of the function. 
+> Slices can be passsed into functions when using variadic arguments.
+> Variadic arguments are preferred when the function created is  commonly called with zero,one or many arguments. 
+
+DEFFERING FUNCTION CALLS
+----------------------------
+>The (defer) keyword in Go allows you to defer the execution of a function call until the return of the parent function. 
+> It means the function denoted as defer will be called after all the other functions have been called/used. 
+> This keyword is commonly used in IO operations to close and release resources when fnction exits. 
+> If there are more than one defer calls, they will be executed in the order of LIFO(last in,first out) procedure. 
+> 
+
+INIT FUNCTION 
+---------------
+>During the initialization of  a .go file, the compiler executes any init functions it finds in the file before the main function. 
+> Unlike other functions that can be only be declared once, the init() fnction can be declared multiple times throughout  a package or file. 
+> They should be ordered in the order they will be executed. 
+> This init feature is usefull in a few use cases hence should be handled keenly when used. 
+> Take on practice examples for solving functions related problems. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

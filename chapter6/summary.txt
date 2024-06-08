@@ -1,0 +1,62 @@
+    STRUCTS, METHODS AND POINTERS. 
+    =============================
+
+: STRUCTS 
+-----------
+
+> A struct is a collection of fields,often called members or attributes. 
+> A struct will be often used to create custom complex types in Go. 
+> The structs will act as a blueprint for what a new type can do. 
+> A struct definition does not contain any data. 
+> When declaring new types in Go , the (type) keyword is commonly used. You also give the new type a name like any other Go type you need to use. 
+> The type's name must be unique within the package and follow the naming conventions in Golang identifiers. 
+> All new types must be based on existing Go types. 
+> For example the first MyInt is based in the int type. 
+> The second MyString is based on the string type. 
+> The third MyMap is based on the map[string]string type 
+> For example the following will be equated to :-
+    type MyInt int
+    type MyString string
+    type MyMap map[string]string
+
+DEFINING A STRUCT -: 
+---------------------
+> structs are an example of user defined types with zero or more fields. 
+> They provide a way to define complex types . 
+> Structs may have zero or more fields and zero or more methods. 
+> For example: 
+    type User struct {
+        Name string
+        Email string
+    }
+> Struct initialization is identical to that of map. 
+> We use the {} syntax to initialize a struct. Optionally,like with maps we can provide a value for each field. 
+> For example :
+    // initialize an empty user
+    u := User{}
+>Fields on the struct can be set during the  initialization. You can set as many or few field values on a struct at initialization as many as you want. 
+>For example to iinitialize user with values. 
+    u := User{
+        Name: "Jimi",
+        Age: 22,
+    }
+> When doing single line initializations we can avoid using field names 
+> For example: 
+        u := User{"Kurt",22}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

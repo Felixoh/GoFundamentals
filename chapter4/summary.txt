@@ -1,0 +1,331 @@
+    
+        MAPS AND CONTROL STRUCTURES 
+        ===========================
+
+MAPS 
+----
+> Maps are powerfull built-in data structure that associates keys and values. 
+> They are a set of unordered set of values indexed by  a unique key. 
+> Map keys and values can be set and retrieved using the [] syntax. 
+> For example :>
+    users := map[string]sring{}
+
+    //add a new key/value pair 
+    users["Janis"] = "janis@example.com"
+
+    // ask for  a value using the key 
+    email := users["Janis"]
+
+    //print the value 
+    fmt.Println(email) 
+> You can use the built-in (len) function to find the length (the number of keys) of a map.
+> There holds an infinite number of keys when using the (cap). 
+
+INITIALIZING MAPS 
+===================
+> You can initialze a  map in a couple ways. 
+> The recommended ways is to initialze the map at the same time as declaring the variable
+> For example :- 
+
+    //using the short syntax way of initializing the Map 
+    users := map[string]string{
+        "kurt@example.com": "Kurt",
+        "janis@example.com": "Janis",
+        "jimi@example.com": "Jimi",
+    }
+
+> You can also make use of the (make) function to create new maps. 
+> Maps cannot be initialzed with a length and capacity. 
+> Example of initialzing with a make function. 
+    var users map[string]string
+    users = make(map[string]string)
+    users["kurt@example.com"] = "Kurt"
+    users["janis@example.com"] = "Janis"
+    users["jimi@example.com"] = "Jimi"
+
+>N/B: If you do not initialize a map and try to access the values, you will receive a  runtime (panic).
+> example var users map[string]string  
+> users["kurt@examplle.com"]
+
+MAP KEYS 
+=============
+> Map keys must be comparable, which means the Go runtime can check the equality of the key in the map with the key being given. 
+> In go all types are comparable. 
+>Basic data types such as string,[]byte and int are the most used key types.
+>Complex and non-comparable types-such as functions, maps or slices cannot be used as key types in maps.
+> 
+
+ITERATING OVER MAPS 
+====================
+> Maps can be iterated over using the range keyword. 
+>The iteration of the map returns the key and the value for each entry in the map.
+> We can iterate over a key value pairs using the variables key and value as is possible. 
+> users := map[string]string{
+"Kurt": "kurt@example.com",
+"Janis": "janis@example.com",
+"Jimi": "jimi@example.com",
+"Amy": "Amy@example.com",
+}
+> To iterate over the map above 
+for key, value := range users {
+    fmt.Printf("%s <%s>\n", key, value)
+}
+
+DELETING KEYS FROM A MAP 
+=========================
+> You can use the built-in (delete) to remove a key and its value from a map 
+> Using the example above we can delete the "kurt" key as 
+> delete(users,"Kurt")
+>This will remove the entry key Kurt and its value. 
+>There is no indication of a delete or non-delete when using the delete keyword in your use cases. 
+> When asking  for a key from a map that does not exist , Go returns the zero of the map's value type. This often leads to a bug. 
+>We can avoid this bug by doing a Map Key check before using the map.
+>Go returns an optional second boolean argument that tells you if the key exists in the map. 
+>Using the example code below we can check the existense of the key
+> 
+users := map[string]string{
+    "Kurt": "kurt@example.com",
+    "Janis": "janis@example.com",
+    "Jimi": "jimi@example.com",
+    "Amy": "Amy@example.com",
+}
+//key we want to check for existence. 
+key := "Kurt"
+email, ok := users[key]
+
+//check using the boolean !ok for whether there exists such a key 
+if !ok {
+fmt.Printf("Key not found: %q\n", key)
+os.Exit(1)
+}
+//key exists proceed to print the Key to console. 
+fmt.Printf("Found key %q: %q", key, email)
+
+
+MAPS AND COMPLEX VALUES 
+========================
+> Storing complex values such as a struct in a map is a very common practice, however updating those complex values is not as straightforward as updating simple value like an integer. 
+> For example 
+type User struct {
+    ID int
+    Name string
+}
+// create a map of users
+data := map[int]User{}
+// create a new user
+user := User{ID: 1, Name: "Kurt"}
+// add the user to the map
+data[1] = user
+// update the user in the map
+data[1].Name = "Janis"
+
+SORTING KEYS IN MAPS 
+======================
+> To sort a map, you must first get the keys from the map,sort the keys and then use the sorted keys to retrieve the values from the map. 
+> The sort package provides a number of functions to perform the sort. 
+
+IF ELSE STATEMENTS. 
+===============
+> Core programming language feature for decision making. 
+> Similar to any other programming language with a  few extra syntax options. 
+> We can make use of the else statement, this allows program for checking both true and false expressions. 
+>> For example 
+    greet := true
+    if greet {
+        fmt.Println("Hello")
+    } else {
+        fmt.Println("GoodBye")
+    }
+> When necessary make use of (else if) syntax to evaluate different expressions in an if statement. 
+> Usually the IF ELSE statements make use of logical operators in their operations,These statements can be broken into four categories.
+> These are the boolean, mathematical, logicl and bitwise operators. 
+> Boolean include : 
+    1. && - conditional AND 
+    2. || - conditional OR 
+    3. ! - conditional NOT 
+
+>Mathematical 
+    1.These include the (+,-,*,/,%)
+
+>Logical comparison 
+    1. == - Equals. 
+    2. != = Not Equal 
+    3. < = Less than 
+    4. > and >= greater and greater than or equal. 
+
+>Bitwise
+    1. & - Bitwise AND 
+    2. | - Bitwise OR 
+    3. << = Left shift 
+    4. >> = Right shift. 
+
+SWITCH STATEMENTS 
+===================
+> They allow same logic decisions as the if statements but they tend to be easier to read. 
+> Each case statements is evaluated in order, and the first one that evaluates to true is used. 
+> For example use case. 
+func main() {
+    month := 3
+        switch month {
+            case 1:
+        fmt.Println("January")
+        case 2:
+        fmt.Println("February")
+        case 3:
+        fmt.Println("March")
+        case 4:
+        fmt.Println("April")
+        case 5:
+        fmt.Println("May")
+        case 6:
+        fmt.Println("June")
+        case 7:
+        fmt.Println("July")
+        case 8:
+        fmt.Println("August")
+        case 9:
+        fmt.Println("September")
+        case 10:
+        fmt.Println("October")
+        case 11:
+        fmt.Println("November")
+        case 12:
+        fmt.Println("December")
+    }
+}
+
+DEFAUL STATEMENT: 
+====================
+> When using a switch statement and if none of the cases matched, a default block can be used. 
+> When there is a need to match more than one condion, you can use fallthrough to allow more than one case to be matched. 
+> func RecommendActivity(temp int) {
+fmt.Printf("It is %d degrees out. You could", temp)
+switch {
+    case temp <= 32:
+        fmt.Print(" go ice skating,")
+        fallthrough
+    case temp >= 45 && temp < 90:
+        fmt.Print(" go jogging,")
+        fallthrough
+    case temp >= 80:
+        fmt.Print(" go swimming,")
+        fallthrough
+    default:
+        fmt.Print(" or just stay home.\n")
+    }
+}
+//test the running functions. 
+func main() {
+    RecommendActivity(19)
+    RecommendActivity(45)
+    RecommendActivity(90)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
