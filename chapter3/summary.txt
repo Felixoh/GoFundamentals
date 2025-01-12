@@ -27,8 +27,8 @@
 
             b) SPOTTING THE DIFFERENCE 
             ========================================
-        >Once created both the arrays and slices behave nearly identical with the only difference being in the way they are created. 
-        >Arrays requires you specify the size at creation time while slices do not.
+        > Once created both the arrays and slices behave nearly identical with the only difference being in the way they are created. 
+        > Arrays requires you specify the size at creation time while slices do not.
         > Example of array : namesArray := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
         > Example of slice :  namesSlice := []string{"Kurt", "Janis", "Jimi", "Amy"}
 
@@ -36,8 +36,8 @@
             =============================================
         > With simple data types such as strings, numbers and booleans , you can use them with no special initialization. 
         > With more complex types, values may need to be initialized before they can be used.
-        >At this initialization time, you have the option of filling the type with values or leaving the type to be empty. 
-        >N/B : Arrays and slices don't need to be initialized before they are used. They can be used without being initialzed. 
+        > At this initialization time, you have the option of filling the type with values or leaving the type to be empty. 
+        > N/B : Arrays and slices don't need to be initialized before they are used. They can be used without being initialzed. 
         > When attempting to access an array with hard-coded index, the Go compiler checks to see if the index is out of bounds.
         > If the index being accessed is out of bounds, the compiler throws an error.
         > If however, the index is a variable or the type is a slice instead of an array, the compiler does not check for out-of-bounds errors. 
@@ -81,7 +81,7 @@
     1. The for loop 
     2. The range keyword. 
 
-    1. THE for LOOP 
+    1. THE FOR  LOOP 
     ==================================
     > Versatile commonly used loop such as for, for while, do while , do until e.t.c 
     > A for loop can consist of three parts (;). 

@@ -105,7 +105,7 @@ RUNE
 
 n/b: when iterating over strings the most appropriate ways is to use the for range keyword and not the 
 traditiona iteration using the for-loop as was the case in traditional looping.
-
+-
 
 VARIABLES
 ========
@@ -139,7 +139,7 @@ VARIABLES
     > The %T verb can show the type of the variable created. 
     
     3. NIL 
-        ========
+    ========
     >There are certain types in Go, such as maps,interfaces and pointers that have no obvious zero values.
     >For these types the zero value is nil. 
 
@@ -173,7 +173,7 @@ VARIABLES
     > Constants are declared using the const keyword. 
     For example: const gopher = "Gopher" 
     > Trying to modify a constant will definitely throw a compile time error because its not allowed in Go 
-    > Values that can be modified such as = >maps,slices=< cannot be constants and neither the result of a function call. 
+    > Values that can be modified such as =>maps,slices=< cannot be constants and neither the result of a function call. 
     > If you declare a constant with a type it will be that exact type 
     > For example: 
         const ( leapYear = int32(366))
@@ -243,4 +243,3 @@ CONVERTING STRINGS TO AND FROM NUMBERS :
 > The most commonly used functions are strconv.ParseInt(),strconv.ParseUint(),strconv.ParseFloat() and strconv.Atoi 
 > When parsing a number from a string, you need to tell Go what base you are using for a number and what bit size you are expecting. 
 > Find test exercises listed in Listings 2.74 for further practice samples. 
-
