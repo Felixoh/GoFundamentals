@@ -45,18 +45,51 @@ DEFINING A STRUCT -:
         u := User{"Kurt",22}
 
 
+INITIALIZATION OF A STRUCT
+-----------------------------
+>This is similar to the maps because we use the {} syntax to initialize the struct,we can optionaly provide the value for each field.
+>Fields on the struct can be set during initialization , you can set as many or as few as you wish to set them.
+>When initializing a struct on a single line, the use of field names is optional.
+>When not using field names during initialization, all fields are required to be present.
+>Finally, the order of the values must match how they are defined in the struct. If the
+order of the fields change in the struct, then the order of the values must also change
+
+ACCESSING STRUCT Fields
+-------------------------
+>The fields can be referenced using the dot notation (a dot folowed by a field name)
+>For example : name := u.Name //assessing the user.name 
 
 
+STRUCT TAGS FOR ENCODING 
+------------------------
+>A common use for struct tags is for encoding the data of your struct to some type of other
+format. JSON
+>
 
+METHODS-
+--------
+>They are syntactic sugar additions to declaring functions on types such as :
+> type User struct {
+        Name string
+        Age int
+    }
+> Before the name of the function, we are introducing a new set of (). This new set of () is there to allow us to define the
+receiver of the method.
+>The receiver is the type of the value that is passed to the method.
+> In this case, the receiver is User. The receiver is available inside the method as the
+variable u.
+>Unlike functions, methods are bound to the type of the receiver.
 
-
-
-
-
-
-
-
-
-
-
-
+POINTERS-
+---------------
+>This is a type that holds the address to the value of a variable.
+>When passing data from one function to another, Go first copies the data to be passed and then sends the
+copied data to the destination function. This is called “pass by value"
+>To indicate a function, or method, wants a pointer to a value, we use a *
+before the type
+>To get a pointer to a value, we use the & operator
+>You can define a receiver for a method as either a value or a pointer receiver. They will
+behave differently. A value receiver cannot mutate the data, whereas a pointer receiver can
+>The built-in function new, takes a type T, allocates storage for a variable of that type at run time and returns a value of type *T pointing to it. The variable is 
+initialized with its zero value.
+> 

@@ -1,0 +1,55 @@
+    TESTING
+    ---------
+
+>As with any statically typed language, the compiler catches a lot of bugs for you. However, it cannot ensure your business logic is sound or bug free. In Go, there are several
+tools to ensure your code is bug free (such as tests), as well as tools to show you what part
+of your code has been tested and which has been not (code coverage).
+>
+
+    NAMING:
+    -------
+    A) Test File naming
+    ---------------------
+>There has been not much convention in the naming of golang tests but the placement of the files plys an important roles in the definition of how tests work in Golang.
+>Whenever a file has been saved with __test.go The compiler tends to treat the file as a golang test file.
+>All files should appear next to their __test files for use whenever they are needed.
+>For example a  file called 
+ >>foo.go will have adjacent test file as _test.go suffix.
+
+    B)Test Function Signature
+    ----------------------------
+>Aside from putting each test in a _test.go file, you also need to name your test functions
+properly.
+> Without the proper naming and signature, Go does not run the function as a test.
+Each test function must have the signature Test<Name>(*
+testing.T).
+>Additionally, each test must accept the (t *testing.T) argument.
+>However the *testing.T type is used to validate the control flow and state of a test.It has several methods available for use in the control flow and state management of 
+programmes.
+>Use go doc testing.t to read the entire methods avaailable in the testing.T interface type.
+
+    C)Marking Test Failures
+    -------------------------
+>Two of the most common calls to make while testing are testing.T.Error and testing.T.Fatal 
+>Both report a test failure, but testing.T.Error continues with execution of that test, whereas testing.T.Fatal ends that test.
+>
+
+    CODE COVERAGES
+    ===============
+>One of the most important parts of writing a solid application that is robust and
+maintainable is to ensure that the code is well tested.
+>. This is especially important when you are working with large code bases.
+> we run go test with the -cover flag. We get an overall code coverage printed for the package or packages being tested
+> go test -cover . 
+>The -cover flag can be run both locally and in CI to help get a quick view into how
+well your packages are tested. 
+>While the -cover flag gives you a quick view of how well your tests are covering your
+code, you can also generate a detailed coverage profile. This report gives you a breakdown
+of which lines of code are covered by tests and which lines are not
+>we pass the -coverprofile flag with a value of coverage.out to go
+test to generate a coverage profile. The tests run, and the coverage.out file is generated
+with the coverage information
+>The go tool cover command can be used to transform the coverage profile generated
+by using the -coverprofile flag with go test.
+>
+
